@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>changmungkhun-HHM MOTOR CO.,LTD </title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ການຈັດວາງ Grid ໃຫ້ເປັນ 3 ລັອກຕໍ່ແຖວ */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        /* ປັບປຸງໃຫ້ເບິ່ງໄດ້ດີໃນມືຖື */
+        @media (max-width: 992px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .product-grid { grid-template-columns: 1fr; }
+        }
+
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            overflow-y: auto;
+            padding-top: 50px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            text-align: center;
+        }
+        .modal-content img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        /* ເຮັດໃຫ້ລາຍລະອຽດຂຶ້ນແຖວໃໝ່ຕາມ \n */
+        #modalDesc {
+            white-space: pre-line;
+            text-align: left;
+            font-size: 1.1rem;
+            margin: 15px 0;
+            color: #444;
+            padding: 0 10px;
+        }
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
+        .logo img {
+            height: 100px; 
+            width: auto;
+            display: block;
+        }
+    </style>
+</head>       
+<body>
+    <header> 
+        <nav class="container">
+            <div class="logo">
+                <img src="img/logo.png" alt="Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">ໜ້າຫຼັກ</a></li>
+                <li><a href="#">ສິນຄ້າ</a></li>
+                <li><a href="#services-section">ການບໍລິການຫຼັງການຂາຍ</a></li>
+                <li><a href="#">ຕິດຕໍ່ພວກເຮົາ</a></li>
+            </ul>
+        </nav>
+    </header>
+ 
+    <section class="hero" style="padding: 100px 20px; text-align: center;">
+    <div class="hero-content">
+        <!-- ປັບ Font ໃຫ້ເໝາະສົມ (ໃຊ້ clamp ເພື່ອໃຫ້ມັນປັບຂະໜາດເອງຕາມໜ້າຈໍ) -->
+        <h1 style="font-size: clamp(32px, 8vw, 60px); line-height: 1.2; margin-bottom: 20px;">
+            ແຂງແກ່ນ ຄືຊ້າງ...<br>ມຸງຄຸນທຸກການເດີນທາງ
+        </h1>
+        
+        <p style="font-size: clamp(18px, 4vw, 24px); max-width: 800px; margin: 0 auto 30px; opacity: 0.9;">
+            ຜະລິດ ແລະ ຈຳໜ່າຍຫາງລາກມາດຕະຖານສາກົນ ເພື່ອທຸລະກິດທີ່ຍື່ນຍົງຂອງທ່ານ
+        </p>
+        
+        <a href="#" class="btn">ເບິ່ງສິນຄ້າທັງໝົດ</a>
+    </div>
+</section>
+
+    <section class="products container">
+        <h2 class="section-title">ຜະລິດຕະພັນຫາງລາກ ຂອງໂຮງງານຊ້າງມຸງຄຸນ</h2>
+        <div class="product-grid">
+            
+            <!-- ແບບທີ 1 -->
+            <div class="product-card">
+                <div class="product-img"><img src="img/hhm-01.jpeg" alt="HHM-01"></div>
+                <h3>ຫາງລາກຄອກພື້ນພຽງ</h3>
+                <p>ຍາວ 14.6 ແມັດ, ກວ້າງ 2.55 ແມັດ, ຝາສູງ 2 ແມັດ</p>
+                <button class="btn-sm" onclick="showDetails('ຫາງລາກຄອກພື້ນພຽງ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-01.jpeg')">ລາຍລະອຽດ</button>
+            </div>
+
+            <!-- ແບບທີ 2 -->
+            <div class="product-card">
+                <div class="product-img"><img src="img/hhm-02.jpeg" alt="HHM-02"></div>
+                <h3>ຫາງລາກຄອກຄໍຫ່ານ</h3>
+                <p>ຍາວ 14.6 ແມັດ, ກວ້າງ 2.55 ແມັດ, ຝາສູງ 2 ແມັດ</p>
+                <button class="btn-sm" onclick="showDetails('ຫາງລາກຄອກຄໍຫ່ານ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-02.jpeg')">ລາຍລະອຽດ</button>
+            </div>
+
+            <!-- ແບບທີ 3 -->
+            <div class="product-card">
+                <div class="product-img"><img src="img/hhm-03.jpg" alt="HHM-03"></div>
+                <h3>ຫາງຄອກ 2 ລະບົບ (ແກ່ຕູ້ໄດ້)</h3>
+                <p>ຍາວ 14.6 ແມັດ, ກວ້າງ 2.55 ແມັດ, ຝາສູງ 2 ແມັດ</p>
+                <button class="btn-sm" onclick="showDetails('ຫາງຄອກ 2 ລະບົບ (ແກ່ຕູ້ໄດ້)', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-03.jpg')">ລາຍລະອຽດ</button>
+            </div>
+
+            <!-- ແບບທີ 4 -->
+            <div class="product-card">
+                <div class="product-img"><img src="img/hhm-04.jpeg" alt="HHM-03-2"></div>
+                <h3>ຫາງຄອກ 2 ລະບົບ (ຖອກຂ້າງ)</h3>
+                <p>ຍາວ 13 ແມັດ, ກວ້າງ 2.55 ແມັດ, ຝາສູງ 2 ແມັດ</p>
+                <button class="btn-sm" onclick="showDetails('ຫາງຄອກ 2 ລະບົບ (ຖອກຂ້າງ)', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 800L', 'img/hhm-04.jpeg')">ລາຍລະອຽດ</button>
+            </div>
+
+            <!-- ແບບທີ 5 -->
+            <div class="product-card">
+                <div class="product-img"><img src="img/hhm-05.jpeg" alt="HHM-04"></div>
+                <h3>ຫາງລາກດ້າມຖອກຂ້າງ 2 ຝັ່ງ</h3>
+                <p>ຍາວ 13 ແມັດ, ກວ້າງ 2.55 ແມັດ, ຝາສູງ 60 ເຊັນ</p>
+                <button class="btn-sm" onclick="showDetails('ຫາງລາກດ້າມຖອກຂ້າງ 2 ຝັ່ງ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-05.jpeg')">ລາຍລະອຽດ</button>
+            </div>
+
+            <!-- ແບບທີ 6 -->
+            <div class="product-card">
+                <div class="product-img"><img src="img/hhm-06.jpeg" alt="HHM-05"></div>
+                <h3>ຫາງລາກດ້າມຖອກຂ້າງ 2 ຝັ່ງ</h3>
+                <p>ຍາວ 13 ແມັດ, ກວ້າງ 2.55 ແມັດ, ຝາສູງ 1 ແມັດ</p>
+                <button class="btn-sm" onclick="showDetails('ຫາງລາກດ້າມຖອກຂ້າງ 2 ຝັ່ງ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-06.jpeg')">ລາຍລະອຽດ</button>
+            </div>
+
+            <!-- ແບບທີ 7 -->
+            <div class="product-card">
+                <div class="product-img"><img src="img/hhm-07.jpeg" alt="HHM-06"></div>
+                <h3>ຫາງລາກດ້າມຖອກຂ້າງດຽວ</h3>
+                <p>ຍາວ 13 ແມັດ, ກວ້າງ 2.55 ແມັດ, ຝາສູງ 1,8 ແມັດ</p>
+                <button class="btn-sm" onclick="showDetails('ຫາງລາກດ້າມຖອກຂ້າງດຽວ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-07.jpeg')">ລາຍລະອຽດ</button>
+            </div>
+
+            <!-- ແບບທີ 8 -->
+            <div class="product-card">
+                <div class="product-img"><img src="img/hhm-08.jpeg" alt="HHM-07"></div>
+                <h3>ຫາງລາກດ້າມຖອກຫຼັງ</h3>
+                <p>ຍາວ 9.6 ແມັດ, ກວ້າງ 2.55 ແມັດ, ຝາສູງ 1,8 ແມັດ</p>
+                <button class="btn-sm" onclick="showDetails('ຫາງລາກດ້າມຖອກຫຼັງ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-08.jpeg')">ລາຍລະອຽດ</button>
+            </div>
+
+            <!-- ແບບທີ 9 -->
+            <div class="product-card">
+                <div class="product-img"><img src="img/hhm-09.jpeg" alt="HHM-08"></div>
+                <h3>ຫາງລາກແກ່ຕູ້ກ້າງປາ</h3>
+                <p>ຍາວ 13 ແມັດ, ກວ້າງ 2.55 ແມັດ, 8-12ລ໊ຶອກ</p>
+                <button class="btn-sm" onclick="showDetails('ຫາງລາກແກ່ຕູ້ກ້າງປາ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-09.jpeg')">ລາຍລະອຽດ</button>
+            </div>
+
+            <!-- ແບບທີ 10 -->
+            <div class="product-card">
+                <div class="product-img"><img src="img/hhm-10.jpeg" alt="HHM-09"></div>
+                <h3>ຫາງລາກແກ່ຕູ້(ບໍ່ມີຫົວຕຽງ)</h3>
+                <p>ຍາວ 13 ແມັດ, ກວ້າງ 2.55 ແມັດ, 8-12ລ໊ຶອກ</p>
+                <button class="btn-sm" onclick="showDetails('ຫາງລາກແກ່ຕູ້(ບໍ່ມີຫົວຕຽງ)', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-10.jpeg')">ລາຍລະອຽດ</button>
+            </div>
+
+            <!-- ແບບທີ 11 -->
+            <div class="product-card">
+                <div class="product-img"><img src="img/hhm-11.jpeg" alt="HHM-10"></div>
+                <h3>ຫາງລາກແກ່ຕູ້(ມີຫົວຕຽງ)</h3>
+                <p>ຍາວ 13 ແມັດ, ກວ້າງ 2.55 ແມັດ, 8-12ລ໊ຶອກ</p>
+                <button class="btn-sm" onclick="showDetails('ຫາງລາກແກ່ຕູ້(ມີຫົວຕຽງ)', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-11.jpeg')">ລາຍລະອຽດ</button>
+            </div>
+
+            <!-- ແບບທີ 12 -->
+            <div class="product-card">
+                <div class="product-img"><img src="img/hhm-12.jpeg" alt="HHM-11"></div>
+                <h3>ຫາງລາກ LOW BED</h3>
+                <p>ຍາວ 13.5 ແມັດ, ກວ້າງ 3 ແມັດ </p>
+                <button class="btn-sm" onclick="showDetails('ຫາງລາກ LOW BED', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 14mm, ກວ້າງ 480mm, ລຸ່ມ 16mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 9.2T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-60T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 800L', 'img/hhm-12.jpeg')">ລາຍລະອຽດ</button>
+            </div>
+
+            <!-- ແບບທີ 13 -->
+            <div class="product-card">
+                <div class="product-img"><img src="img/hhm-13.jpeg" alt="HHM-12"></div>
+                <h3>ຫາງລາກລູກພ່ວງທຳມະດາ</h3>
+                <p>ຍາວ 7 ແມັດ, ກວ້າງ 2.55 ແມັດ, ຝາສູງ 2 ແມັດ</p>
+                <button class="btn-sm" onclick="showDetails('ຫາງລາກລູກພ່ວງທຳມະດາ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-13.jpeg')">ລາຍລະອຽດ</button>
+            </div>
+
+            <!-- ແບບທີ 14 -->
+            <div class="product-card">
+                <div class="product-img"><img src="img/hhm-14.jpeg" alt="HHM-14"></div>
+                <h3>ຫາງລາກມ໋ອກດ້າມຫຼັງ</h3>
+                <p>ຍາວ 8.1 ແມັດ, ກວ້າງ 2.55 ແມັດ, ຝາສູງ 2 ແມັດ</p>
+                <button class="btn-sm" onclick="showDetails('ຫາງລາກມ໋ອກດ້າມຫຼັງ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-14.jpeg')">ລາຍລະອຽດ</button>
+            </div>
+
+            <!-- ແບບທີ 15 -->
+            <div class="product-card">
+                <div class="product-img"><img src="img/hhm-15.jpeg" alt="HHM-15"></div>
+                <h3>ຫາງລາກພິເສດ (Custom Made)</h3>
+                <p>ຜະລິດຕາມຄວາມຕ້ອງການຂອງລູກຄ້າ</p>
+                <button class="btn-sm" onclick="showDetails('ຫາງລາກພິເສດ', 'ສາມາດສັ່ງຜະລິດໄດ້ຕາມຂະໜາດທີ່ຕ້ອງການ ເພື່ອໃຫ້ເໝາະສົມກັບການນຳໃຊ້ຂອງທ່ານ', 'img/hhm-15.jpeg')">ລາຍລະອຽດ</button> 
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Modal Popup Section -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImg" src="" alt="Product Image">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDesc"></p>
+            <hr>
+            <p style="margin-top:15px;">ສອບຖາມຂໍ້ມູນເພີ່ມເຕີມ:</p>
+            <a href="https://wa.me/8562051798888" target="_blank" style="background-color: #25D366; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; font-weight: bold;">WhatsApp: +856 20 5179 8888</a>
+        </div>
+    </div>
+<section id="services-section" class="services container" style="margin-top: 60px; padding-bottom: 40px;">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 30px;">ການບໍລິການ ແລະ ການບຳລຸງຮັກສາ</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <!-- ຮູບການບໍລິການ 1 -->
+            <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <img src="img/service-1.jpg" alt="ບໍລິການ 1" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <div style="padding: 15px; background: #fff; text-align: center;">
+                    <strong style="color: #2b6ef5;">ກວດເຊັກສະພາບ</strong>
+                </div>
+            </div>
+
+            <!-- ຮູບການບໍລິການ 2 -->
+            <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <img src="img/service-2.jpg" alt="ບໍລິການ 2" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <div style="padding: 15px; background: #fff; text-align: center;">
+                    <strong style="color: #2b6ef5;">ທີມງານຊ່ຽວຊານ</strong>
+                </div>
+            </div>
+
+            <!-- ຮູບການບໍລິການ 3 -->
+            <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <img src="img/service-3.jpg" alt="ບໍລິການ 3" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <div style="padding: 15px; background: #fff; text-align: center;">
+                    <strong style="color: #2b6ef5;">ອະໄຫລ່ແທ້</strong>
+                </div>
+            </div>
+
+            <!-- ຮູບການບໍລິການ 4 -->
+            <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <img src="img/service-4.jpg" alt="ບໍລິການ 4" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <div style="padding: 15px; background: #fff; text-align: center;">
+                    <strong style="color: #2b6ef5;">ພ້ອມໃຊ້ງານ</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Section -->
+    <footer style="background: #2b6ef5; color: white; padding: 40px 0; margin-top: 50px;">
+        <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+            <div>
+                <h3>ບໍລິສັດ ຮຸ່ງອາລຸນ ທົວທົ່ງຕ້າ ມໍເຕີ ຈຳກັດ</h3>
+                <p>HHM MOTOR CO.,LTD</p>
+                <p>ໂຮງງານຜະລິດ ແລະ ຈຳໜ່າຍຫາງລາກມາດຕະຖານສາກົນ</p>
+            </div>
+            <div>
+                <h4>ຊ່ອງທາງການຕິດຕໍ່</h4>
+                <p>📍 ທີ່ຕັ້ງ: ບ້ານແຈ້ງສະຫວ່າງ ເມືອງນາຊາຍທອງ ນະຄອນຫຼວງວຽງຈັນ</p>
+                <p>📞 ໂທ: +856 20 5179 8888</p>
+                <p>📧 Email: info@hhm-motor.com</p>
+            </div>
+            <div>
+                <h4>ຕິດຕາມພວກເຮົາ</h4>
+                <p>Facebook: ຊ້າງມຸງຄຸນ - HHM Motor</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+            <p>&copy; 2026 HHM MOTOR CO.,LTD. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showDetails(title, desc, imgSrc) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalImg').src = imgSrc;
+            document.getElementById('productModal').style.display = "block";
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').style.display = "none";
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            let modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
