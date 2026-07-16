@@ -22,6 +22,53 @@
             .product-grid { grid-template-columns: 1fr; }
         }
 
+        /* ລະບົບ Slider ພື້ນຫຼັງຂອງ Hero Section */
+        .hero {
+            position: relative;
+            padding: 120px 20px;
+            text-align: center;
+            overflow: hidden;
+            color: white; /* ປ່ຽນຕົວໜັງສືໃຫ້ເປັນສີຂາວເພື່ອໃຫ້ເຫັນແຈ້ງເທິງພື້ນຫຼັງ */
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300%; /* 3 ຮູບ = 300% */
+            height: 100%;
+            display: flex;
+            z-index: 1;
+            animation: slideLeft 15s infinite ease-in-out;
+        }
+
+        .slide {
+            width: 100.333%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* ໃສ່ຮູບພາບພື້ນຫຼັງຕາມທີ່ກຳນົດ */
+        .slide-1 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/carousel-bg-1.jpg'); }
+        .slide-2 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/carousel-bg-2.jpg'); }
+        .slide-3 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/carousel-bg-4.jpg'); }
+
+        .hero-content {
+            position: relative;
+            z-index: 2; /* ໃຫ້ເນື້ອຫາຢູ່ເທິງຮູບສະໄລ້ */
+        }
+
+        /* Animation ເຮັດໃຫ້ສະໄລ້ເລື່ອນໄປທາງຊ້າຍ */
+        @keyframes slideLeft {
+            0%, 28% { transform: translateX(0); }
+            33%, 61% { transform: translateX(-33.333%); }
+            66%, 95% { transform: translateX(-66.666%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Modal Styles */
         .modal {
             display: none; 
             position: fixed;
@@ -43,6 +90,7 @@
             max-width: 600px;
             position: relative;
             text-align: center;
+            color: #333;
         }
         .modal-content img {
             width: 100%;
@@ -51,7 +99,6 @@
             border-radius: 8px;
             margin-bottom: 15px;
         }
-        /* ເຮັດໃຫ້ລາຍລະອຽດຂຶ້ນແຖວໃໝ່ຕາມ \n */
         #modalDesc {
             white-space: pre-line;
             text-align: left;
@@ -91,26 +138,30 @@
         </nav>
     </header>
  
-    <section class="hero" style="padding: 100px 20px; text-align: center;">
-    <div class="hero-content">
-        <!-- ປັບ Font ໃຫ້ເໝາະສົມ (ໃຊ້ clamp ເພື່ອໃຫ້ມັນປັບຂະໜາດເອງຕາມໜ້າຈໍ) -->
-        <h1 style="font-size: clamp(32px, 8vw, 60px); line-height: 1.2; margin-bottom: 20px;">
-            ແຂງແກ່ນ ຄືຊ້າງ...<br>ມຸງຄຸນທຸກການເດີນທາງ
-        </h1>
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="slide slide-1"></div>
+            <div class="slide slide-2"></div>
+            <div class="slide slide-3"></div>
+        </div>
         
-        <p style="font-size: clamp(18px, 4vw, 24px); max-width: 800px; margin: 0 auto 30px; opacity: 0.9;">
-            ຜະລິດ ແລະ ຈຳໜ່າຍຫາງລາກມາດຕະຖານສາກົນ ເພື່ອທຸລະກິດທີ່ຍື່ນຍົງຂອງທ່ານ
-        </p>
-        
-        <a href="#" class="btn">ເບິ່ງສິນຄ້າທັງໝົດ</a>
-    </div>
-</section>
+        <div class="hero-content">
+            <h1 style="font-size: clamp(32px, 8vw, 60px); line-height: 1.2; margin-bottom: 20px;">
+                ແຂງແກ່ນ ຄືຊ້າງ...<br>ມຸງຄຸນທຸກການເດີນທາງ
+            </h1>
+            
+            <p style="font-size: clamp(18px, 4vw, 24px); max-width: 800px; margin: 0 auto 30px; opacity: 0.9;">
+                ຜະລິດ ແລະ ຈຳໜ່າຍຫາງລາກມາດຕະຖານສາກົນ ເພື່ອທຸລະກິດທີ່ຍື່ນຍົງຂອງທ່ານ
+            </p>
+            
+            <a href="#" class="btn">ເບິ່ງສິນຄ້າທັງໝົດ</a>
+        </div>
+    </section>
 
     <section class="products container">
         <h2 class="section-title">ຜະລິດຕະພັນຫາງລາກ ຂອງໂຮງງານຊ້າງມຸງຄຸນ</h2>
         <div class="product-grid">
             
-            <!-- ແບບທີ 1 -->
             <div class="product-card">
                 <div class="product-img"><img src="img/hhm-01.jpeg" alt="HHM-01"></div>
                 <h3>ຫາງລາກຄອກພື້ນພຽງ</h3>
@@ -118,7 +169,6 @@
                 <button class="btn-sm" onclick="showDetails('ຫາງລາກຄອກພື້ນພຽງ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-01.jpeg')">ລາຍລະອຽດ</button>
             </div>
 
-            <!-- ແບບທີ 2 -->
             <div class="product-card">
                 <div class="product-img"><img src="img/hhm-02.jpeg" alt="HHM-02"></div>
                 <h3>ຫາງລາກຄອກຄໍຫ່ານ</h3>
@@ -126,7 +176,6 @@
                 <button class="btn-sm" onclick="showDetails('ຫາງລາກຄອກຄໍຫ່ານ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-02.jpeg')">ລາຍລະອຽດ</button>
             </div>
 
-            <!-- ແບບທີ 3 -->
             <div class="product-card">
                 <div class="product-img"><img src="img/hhm-03.jpg" alt="HHM-03"></div>
                 <h3>ຫາງຄອກ 2 ລະບົບ (ແກ່ຕູ້ໄດ້)</h3>
@@ -134,7 +183,6 @@
                 <button class="btn-sm" onclick="showDetails('ຫາງຄອກ 2 ລະບົບ (ແກ່ຕູ້ໄດ້)', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-03.jpg')">ລາຍລະອຽດ</button>
             </div>
 
-            <!-- ແບບທີ 4 -->
             <div class="product-card">
                 <div class="product-img"><img src="img/hhm-04.jpeg" alt="HHM-03-2"></div>
                 <h3>ຫາງຄອກ 2 ລະບົບ (ຖອກຂ້າງ)</h3>
@@ -142,7 +190,6 @@
                 <button class="btn-sm" onclick="showDetails('ຫາງຄອກ 2 ລະບົບ (ຖອກຂ້າງ)', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 800L', 'img/hhm-04.jpeg')">ລາຍລະອຽດ</button>
             </div>
 
-            <!-- ແບບທີ 5 -->
             <div class="product-card">
                 <div class="product-img"><img src="img/hhm-05.jpeg" alt="HHM-04"></div>
                 <h3>ຫາງລາກດ້າມຖອກຂ້າງ 2 ຝັ່ງ</h3>
@@ -150,7 +197,6 @@
                 <button class="btn-sm" onclick="showDetails('ຫາງລາກດ້າມຖອກຂ້າງ 2 ຝັ່ງ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-05.jpeg')">ລາຍລະອຽດ</button>
             </div>
 
-            <!-- ແບບທີ 6 -->
             <div class="product-card">
                 <div class="product-img"><img src="img/hhm-06.jpeg" alt="HHM-05"></div>
                 <h3>ຫາງລາກດ້າມຖອກຂ້າງ 2 ຝັ່ງ</h3>
@@ -158,7 +204,6 @@
                 <button class="btn-sm" onclick="showDetails('ຫາງລາກດ້າມຖອກຂ້າງ 2 ຝັ່ງ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-06.jpeg')">ລາຍລະອຽດ</button>
             </div>
 
-            <!-- ແບບທີ 7 -->
             <div class="product-card">
                 <div class="product-img"><img src="img/hhm-07.jpeg" alt="HHM-06"></div>
                 <h3>ຫາງລາກດ້າມຖອກຂ້າງດຽວ</h3>
@@ -166,15 +211,13 @@
                 <button class="btn-sm" onclick="showDetails('ຫາງລາກດ້າມຖອກຂ້າງດຽວ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-07.jpeg')">ລາຍລະອຽດ</button>
             </div>
 
-            <!-- ແບບທີ 8 -->
             <div class="product-card">
                 <div class="product-img"><img src="img/hhm-08.jpeg" alt="HHM-07"></div>
                 <h3>ຫາງລາກດ້າມຖອກຫຼັງ</h3>
                 <p>ຍາວ 9.6 ແມັດ, ກວ້າງ 2.55 ແມັດ, ຝາສູງ 1,8 ແມັດ</p>
-                <button class="btn-sm" onclick="showDetails('ຫາງລາກດ້າມຖອກຫຼັງ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-08.jpeg')">ລາຍລະອຽດ</button>
+                <button class="btn-sm" onclick="showDetails('ຫາງລາກດ້າມຖອກຫຼັງ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເเปັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-08.jpeg')">ລາຍລະອຽດ</button>
             </div>
 
-            <!-- ແບບທີ 9 -->
             <div class="product-card">
                 <div class="product-img"><img src="img/hhm-09.jpeg" alt="HHM-08"></div>
                 <h3>ຫາງລາກແກ່ຕູ້ກ້າງປາ</h3>
@@ -182,7 +225,6 @@
                 <button class="btn-sm" onclick="showDetails('ຫາງລາກແກ່ຕູ້ກ້າງປາ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-09.jpeg')">ລາຍລະອຽດ</button>
             </div>
 
-            <!-- ແບບທີ 10 -->
             <div class="product-card">
                 <div class="product-img"><img src="img/hhm-10.jpeg" alt="HHM-09"></div>
                 <h3>ຫາງລາກແກ່ຕູ້(ບໍ່ມີຫົວຕຽງ)</h3>
@@ -190,7 +232,6 @@
                 <button class="btn-sm" onclick="showDetails('ຫາງລາກແກ່ຕູ້(ບໍ່ມີຫົວຕຽງ)', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-10.jpeg')">ລາຍລະອຽດ</button>
             </div>
 
-            <!-- ແບບທີ 11 -->
             <div class="product-card">
                 <div class="product-img"><img src="img/hhm-11.jpeg" alt="HHM-10"></div>
                 <h3>ຫາງລາກແກ່ຕູ້(ມີຫົວຕຽງ)</h3>
@@ -198,15 +239,13 @@
                 <button class="btn-sm" onclick="showDetails('ຫາງລາກແກ່ຕູ້(ມີຫົວຕຽງ)', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-11.jpeg')">ລາຍລະອຽດ</button>
             </div>
 
-            <!-- ແບບທີ 12 -->
             <div class="product-card">
                 <div class="product-img"><img src="img/hhm-12.jpeg" alt="HHM-11"></div>
                 <h3>ຫາງລາກ LOW BED</h3>
                 <p>ຍາວ 13.5 ແມັດ, ກວ້າງ 3 ແມັດ </p>
-                <button class="btn-sm" onclick="showDetails('ຫາງລາກ LOW BED', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 14mm, ກວ້າງ 480mm, ລຸ່ມ 16mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 9.2T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-60T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 800L', 'img/hhm-12.jpeg')">ລາຍລະອຽດ</button>
+                <button class="btn-sm" onclick="showDetails('ຫາງລາກ LOW BED', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 14mm, ກວ້າງ 480mm, ລຸ່ມ 16mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 9.2T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-60T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1າ\n- ຖັງບັນຈຸນ້ຳ: 800L', 'img/hhm-12.jpeg')">ລາຍລະອຽດ</button>
             </div>
 
-            <!-- ແບບທີ 13 -->
             <div class="product-card">
                 <div class="product-img"><img src="img/hhm-13.jpeg" alt="HHM-12"></div>
                 <h3>ຫາງລາກລູກພ່ວງທຳມະດາ</h3>
@@ -214,7 +253,6 @@
                 <button class="btn-sm" onclick="showDetails('ຫາງລາກລູກພ່ວງທຳມະດາ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-13.jpeg')">ລາຍລະອຽດ</button>
             </div>
 
-            <!-- ແບບທີ 14 -->
             <div class="product-card">
                 <div class="product-img"><img src="img/hhm-14.jpeg" alt="HHM-14"></div>
                 <h3>ຫາງລາກມ໋ອກດ້າມຫຼັງ</h3>
@@ -222,7 +260,6 @@
                 <button class="btn-sm" onclick="showDetails('ຫາງລາກມ໋ອກດ້າມຫຼັງ', 'ສະເປັກ: ຄານຊີໜາ: ເທິງ 10mm, ກວ້າງ 480mm, ລຸ່ມ 12mm\n- ຂະໜາດເພົາລະ 13T / ຢາງ 12R22.5\n- ນ້ຳໜັກຫາງ: 7.5T\n- ຮັບນ້ຳໜັກບັນທຸກໄດ້ເຖິງ: 40T-50T\n- ຂາເປັດຮັບນ້ຳໜັກໄດ້: 28T / 1ຂາ\n- ຖັງບັນຈຸນ້ຳ: 1000L', 'img/hhm-14.jpeg')">ລາຍລະອຽດ</button>
             </div>
 
-            <!-- ແບບທີ 15 -->
             <div class="product-card">
                 <div class="product-img"><img src="img/hhm-15.jpeg" alt="HHM-15"></div>
                 <h3>ຫາງລາກພິເສດ (Custom Made)</h3>
@@ -233,7 +270,6 @@
         </div>
     </section>
 
-    <!-- Modal Popup Section -->
     <div id="productModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
@@ -245,44 +281,41 @@
             <a href="https://wa.me/8562051798888" target="_blank" style="background-color: #25D366; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; font-weight: bold;">WhatsApp: +856 20 5179 8888</a>
         </div>
     </div>
-<section id="services-section" class="services container" style="margin-top: 60px; padding-bottom: 40px;">
+
+    <section id="services-section" class="services container" style="margin-top: 60px; padding-bottom: 40px;">
         <h2 class="section-title" style="text-align: center; margin-bottom: 30px;">ການບໍລິການ ແລະ ການບຳລຸງຮັກສາ</h2>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-            <!-- ຮູບການບໍລິການ 1 -->
             <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                <img src="img/service-1.jpg" alt="ບໍລິການ 1" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <img src="img/service-1.jpeg" alt="ບໍລິການ 1" style="width: 100%; height: 200px; object-fit: cover; display: block;">
                 <div style="padding: 15px; background: #fff; text-align: center;">
                     <strong style="color: #2b6ef5;">ກວດເຊັກສະພາບ</strong>
                 </div>
             </div>
 
-            <!-- ຮູບການບໍລິການ 2 -->
             <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                <img src="img/service-2.jpg" alt="ບໍລິການ 2" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <img src="img/service-2.jpeg" alt="ບໍລິການ 2" style="width: 100%; height: 200px; object-fit: cover; display: block;">
                 <div style="padding: 15px; background: #fff; text-align: center;">
                     <strong style="color: #2b6ef5;">ທີມງານຊ່ຽວຊານ</strong>
                 </div>
             </div>
 
-            <!-- ຮູບການບໍລິການ 3 -->
             <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                <img src="img/service-3.jpg" alt="ບໍລິການ 3" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <img src="img/service-3.jpeg" alt="ບໍລິການ 3" style="width: 100%; height: 200px; object-fit: cover; display: block;">
                 <div style="padding: 15px; background: #fff; text-align: center;">
                     <strong style="color: #2b6ef5;">ອະໄຫລ່ແທ້</strong>
                 </div>
             </div>
 
-            <!-- ຮູບການບໍລິການ 4 -->
             <div style="overflow: hidden; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                <img src="img/service-4.jpg" alt="ບໍລິການ 4" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <img src="img/service-4.jpeg" alt="ບໍລິການ 4" style="width: 100%; height: 200px; object-fit: cover; display: block;">
                 <div style="padding: 15px; background: #fff; text-align: center;">
                     <strong style="color: #2b6ef5;">ພ້ອມໃຊ້ງານ</strong>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Footer Section -->
+
     <footer style="background: #2b6ef5; color: white; padding: 40px 0; margin-top: 50px;">
         <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
             <div>
